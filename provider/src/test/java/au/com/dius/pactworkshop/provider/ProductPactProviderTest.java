@@ -30,8 +30,8 @@ import static org.mockito.Mockito.when;
 //@PactFolder("pacts")
 @PactBroker(
         host = "localhost",
-        port = "8000",
-        authentication = @PactBrokerAuth(username = "pact_workshop", password = "pact_workshop")
+        port = "9292",
+        authentication = @PactBrokerAuth(username = "jobkorea", password = "1111")
 )
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -79,7 +79,10 @@ public class ProductPactProviderTest {
     }
 
     @State("product with ID 10 exists")
-    void toProductWithIdTenExistsState() {
-        when(productRepository.getById("10")).thenReturn(Optional.of(new Product("10", "CREDIT_CARD", "28 Degrees", "v1")));
+    void toProductsExistState_10(){
+        when(productRepository.fetchAll()).thenReturn(
+            Arrays.asList(new Product("09", "CREDIT_CARD", "Gem Visa", "v1"))
+        );
     }
+
 }

@@ -7,6 +7,8 @@ services:
       test: psql postgres --command "select 1" -U postgres
     ports:
       - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -14,14 +16,20 @@ services:
 
   broker_app:
     image: pactfoundation/pact-broker
+    platform: linux/amd64
     links:
       - postgres
     ports:
-      - 8000:9292
+      - 9292:9292
     environment:
-      PACT_BROKER_BASIC_AUTH_USERNAME: pact_workshop
-      PACT_BROKER_BASIC_AUTH_PASSWORD: pact_workshop
+      PACT_BROKER_PORT: '9292'
+      PACT_BROKER_LOG_LEVEL: INFO
+      PACT_BROKER_SQL_LOG_LEVEL: DEBUG
+      PACT_BROKER_BASIC_AUTH_USERNAME: jobkorea
+      PACT_BROKER_BASIC_AUTH_PASSWORD: 1111
       PACT_BROKER_DATABASE_USERNAME: postgres
       PACT_BROKER_DATABASE_PASSWORD: password
       PACT_BROKER_DATABASE_HOST: postgres
       PACT_BROKER_DATABASE_NAME: postgres
+volumes:
+  data: {}

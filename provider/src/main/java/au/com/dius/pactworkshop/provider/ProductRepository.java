@@ -27,7 +27,8 @@ public class ProductRepository {
 
     private void initProducts() {
         PRODUCTS.put("09", new Product("09", "CREDIT_CARD", "Gem Visa", "v1"));
-        PRODUCTS.put("10", new Product("10", "CREDIT_CARD", "28 Degrees", "v1"));
-        PRODUCTS.put("11", new Product("11", "PERSONAL_LOAN", "MyFlexiPay", "v2"));
+//        PRODUCTS.put("09", new Product("09", "CREDIT_CARD", "Gem Visa", "v1"));
+//        PRODUCTS.put("10", new Product("10", "CREDIT_CARD", "28 Degrees", "v1"));
+//        PRODUCTS.put("11", new Product("11", "PERSONAL_LOAN", "MyFlexiPay", "v2"));
     }
 }

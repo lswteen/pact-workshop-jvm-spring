@@ -67,9 +67,9 @@ def getGitBranch = { ->
 pact {
 	publish {
 		pactDirectory = 'consumer/build/pacts'
-		pactBrokerUrl = 'http://localhost:8000/'
-		pactBrokerUsername = 'pact_workshop'
-		pactBrokerPassword = 'pact_workshop'
+		pactBrokerUrl = 'http://localhost:9292/'
+		pactBrokerUsername = 'jobkorea'
+		pactBrokerPassword = '1111'
 		tags = [getGitBranch(), 'test', 'prod']
 		consumerVersion = getGitHash()
 	}

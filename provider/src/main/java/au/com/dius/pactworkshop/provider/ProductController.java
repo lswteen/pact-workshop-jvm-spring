@@ -19,12 +19,12 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("products")
+    @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productRepository.fetchAll();
     }
 
-    @GetMapping("product/{id}")
+    @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable("id") String id) {
         Optional<Product> product = productRepository.getById(id);
 
