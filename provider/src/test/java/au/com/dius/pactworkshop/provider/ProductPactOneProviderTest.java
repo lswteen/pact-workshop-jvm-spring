@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,6 +23,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.Mockito.when;
+
+@ExtendWith(SpringExtension.class)
 @Provider("ProductOneService")
 //@PactFolder("pacts")
 @PactBroker(
@@ -29,10 +33,9 @@ import java.util.List;
         port = "9292",
         authentication = @PactBrokerAuth(username = "jobkorea", password = "1111")
 )
-@ExtendWith(SpringExtension.class)
 public class ProductPactOneProviderTest {
 
-    @InjectMocks
+    @Mock
     private ProductRepository productRepository;
 
     ProductController productController;
@@ -81,7 +84,8 @@ public class ProductPactOneProviderTest {
             //new Product("09", "CREDIT_CARD", "Gem Visa", "v1")
         );
 
-        Mockito.when(productRepository.fetchAll()).thenReturn(response);
+        when(productRepository.fetchAll()).thenReturn(response);
+
 
     }
 

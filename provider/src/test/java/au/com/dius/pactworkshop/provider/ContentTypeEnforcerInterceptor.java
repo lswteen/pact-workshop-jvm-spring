@@ -11,6 +11,6 @@ public class ContentTypeEnforcerInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) {
         response.setHeader("Content-Type", "application/json; charset=UTF-8");
-        response.setHeader("Authorization", "Bearer 2086-10-31T22:52");
+        response.setHeader("Authorization", "Bearer 1957-08-21T20:33");
     }
 }

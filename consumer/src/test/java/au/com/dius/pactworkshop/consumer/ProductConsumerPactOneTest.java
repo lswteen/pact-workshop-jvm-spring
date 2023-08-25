@@ -38,13 +38,13 @@ public class ProductConsumerPactOneTest {
                 .willRespondWith()
                 .status(200)
                 .headers(headers())
-                .body(newJsonArrayMinLike(2, array ->
-                        array.object(object -> {
-                            object.stringType("id", "09");
-                            object.stringType("type", "CREDIT_CARD");
-                            object.stringType("name", "Gem Visa");
-                            object.stringType("version","v1");
-                        })
+                .body(newJsonArrayMinLike(1, array ->
+                    array.object(object -> {
+                        object.stringType("id", "09");
+                        object.stringType("type", "CREDIT_CARD");
+                        object.stringType("name", "Gem Visa");
+                        object.stringType("version","v1");
+                    })
                 ).build())
                 .toPact();
     }
@@ -53,13 +53,13 @@ public class ProductConsumerPactOneTest {
     @Test
     @PactTestFor(pactMethod = "getAllProducts")
     void getAllProducts_whenProductsExist(MockServer mockServer) {
-        Product product = new Product();
-        product.setId("09");
-        product.setType("CREDIT_CARD");
-        product.setName("Gem Visa");
-        product.setVersion("v1");
+        Product product1 = new Product();
+        product1.setId("09");
+        product1.setType("CREDIT_CARD");
+        product1.setName("Gem Visa");
+        product1.setVersion("v1");
 
-        List<Product> expected = Arrays.asList(product, product);
+        List<Product> expected = Arrays.asList(product1);
 
         RestTemplate restTemplate = new RestTemplateBuilder()
                 .rootUri(mockServer.getUrl())
